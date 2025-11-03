@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Alice Johnson",
+        "branch": "csm",
+    
+        "cgpa": 8.7
+    },
+    {
+        "id": 2,
+        "name": "Bob Smith",
+        "branch": "csd",
+    
+        "cgpa": 8.4
+    },
+    {
+        "id": 3,
+        "name": "Charlie Brown",
+        "branch": "cse",
+    
+        "cgpa": 8.2
+    },
+    {
+        "id": 4,
+        "name": "Emily Davis",
+        "branch": "csm",
+    
+        "cgpa": 8.7
+    },
+    {
+        "id": 5,
+        "name": "Johnson",
+        "branch": "csm",
+    
+        "cgpa": 8.7
+    },
+    {
+        "id": 6,
+        "name": "Alice",
+        "branch": "csm",
+    
+        "cgpa": 8.7
+    }
+]

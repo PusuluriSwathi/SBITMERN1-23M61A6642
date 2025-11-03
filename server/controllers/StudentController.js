@@ -1,4 +1,4 @@
-const Student = require('../models/Studentschema'); // adjust filename/case if needed
+const Student = require('../models/StudentSchema'); // adjust filename/case if needed
 
 // Create a student
 exports.createStudent = async (req, res) => {

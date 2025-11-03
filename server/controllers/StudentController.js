@@ -1,5 +1,4 @@
-// ...existing code...
-const Student = require('../models/Studentschema'); // ensure filename matches your model
+const Student = require('../models/Studentschema'); // adjust filename/case if needed
 
 // Create a student
 exports.createStudent = async (req, res) => {
@@ -13,6 +12,7 @@ exports.createStudent = async (req, res) => {
   }
 };
 
+// Get all students
 exports.getStudents = async (req, res) => {
   try {
     const students = await Student.find();
@@ -23,19 +23,33 @@ exports.getStudents = async (req, res) => {
   }
 };
 
-exports.updateStudent = async (req, res) => {
+// Get single student
+exports.getStudent = async (req, res) => {
   try {
-    const student = await Student.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const student = await Student.findById(req.params.id);
     if (!student) return res.status(404).json({ message: 'Student not found' });
     res.json(student);
   } catch (error) {
     console.error(error);
+    if (error.name === 'CastError') return res.status(400).json({ message: 'Invalid student id' });
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Update student
+exports.updateStudent = async (req, res) => {
+  try {
+    const student = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!student) return res.status(404).json({ message: 'Student not found' });
+    res.json(student);
+  } catch (error) {
+    console.error(error);
+    if (error.name === 'CastError') return res.status(400).json({ message: 'Invalid student id' });
     res.status(400).json({ message: error.message });
   }
 };
 
+// Delete student
 exports.deleteStudent = async (req, res) => {
   try {
     const student = await Student.findByIdAndDelete(req.params.id);
@@ -43,7 +57,7 @@ exports.deleteStudent = async (req, res) => {
     res.json({ message: 'Student deleted' });
   } catch (error) {
     console.error(error);
+    if (error.name === 'CastError') return res.status(400).json({ message: 'Invalid student id' });
     res.status(500).json({ message: error.message });
   }
 };
-// ...existing code...
